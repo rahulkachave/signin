@@ -39,6 +39,7 @@ public class SignUPIMPL implements  SignUpService{
     public LoginResponse loginemployee(LogIn login) {
 
         String msg = "";
+        
         SIgnUp sign1 = signUprepo.findByEmail(login.getEmail());
         if (sign1 != null) {
             String password = login.getPassword();
