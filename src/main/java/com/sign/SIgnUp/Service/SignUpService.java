@@ -10,5 +10,6 @@ public interface SignUpService {
 
     String adddata(SignUpDTO signUpDTO);
 
+
     LoginResponse loginemployee(LogIn login);
 }

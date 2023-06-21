@@ -4,8 +4,10 @@ package com.sign.SIgnUp.Entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Document(collection ="profile")
+
 public class SIgnUp {
 
     @Id
@@ -16,8 +18,6 @@ public class SIgnUp {
    private String email;
 
    private String password;
-
-
     public SIgnUp(String id, String name, String email, String password) {
         this.id = id;
         this.name = name;

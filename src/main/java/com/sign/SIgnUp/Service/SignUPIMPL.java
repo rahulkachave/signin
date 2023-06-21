@@ -22,6 +22,7 @@ public class SignUPIMPL implements  SignUpService{
 
     @Override
     public String adddata(SignUpDTO signUpDTO) {
+      validateSignUpDTO(signUpDTO);
 
         SIgnUp sign = new SIgnUp(
 
@@ -39,6 +40,7 @@ public class SignUPIMPL implements  SignUpService{
     public LoginResponse loginemployee(LogIn login) {
 
         String msg = "";
+
         SIgnUp sign1 = signUprepo.findByEmail(login.getEmail());
         if (sign1 != null) {
             String password = login.getPassword();
@@ -58,5 +60,20 @@ public class SignUPIMPL implements  SignUpService{
             return new LoginResponse("Email not exits", false);
         }
 
+
+
+
     }
+    private void validateSignUpDTO(SignUpDTO signUpDTO) {
+        if (signUpDTO.getName() == null || signUpDTO.getName().isEmpty()) {
+            throw new IllegalArgumentException("Name is required");
+        }
+        if(signUpDTO.getEmail()==null || signUpDTO.getEmail().isEmpty()) {
+            throw new IllegalArgumentException(("Email is required"));
+        }
+        if(signUpDTO.getPassword()==null || signUpDTO.getPassword().isEmpty()){
+            throw new IllegalArgumentException(("password is required"));
+        }
+    }
+
 }
